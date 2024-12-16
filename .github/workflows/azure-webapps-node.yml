@@ -1,18 +1,24 @@
-name: Conditional Workflow
+name: Auto and Manual Workflow
+
 on:
-  workflow_dispatch:
+  push:
+    branches:
+      - main
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Step 1
-        run: echo "Step 1 completed!"
+      - name: Step 1 - Build
+        run: echo "Building project..."
+      - name: Step 2 - Test
+        run: echo "Running tests..."
 
-  manual-step:
+  deploy:
     needs: build
     runs-on: ubuntu-latest
-    if: github.event.inputs.continue == 'true' # 检查是否继续
+    environment:
+      name: production # 设置需要审批的环境
     steps:
-      - name: Step 2
-        run: echo "Step 2 completed!"
+      - name: Step 3 - Awaiting Approval
+        run: echo "Deploying project to production after approval..."
