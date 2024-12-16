@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: ./.github
+        working-directory: test
     steps:
       - name: Step 1 - Build
         run: ls
@@ -24,7 +24,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: ./.github
+        working-directory: test
     environment:
       name: production  # 需要审批的环境
     steps:
