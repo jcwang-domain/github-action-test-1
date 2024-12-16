@@ -14,6 +14,8 @@ jobs:
         working-directory: test
     steps:
       - name: Step 1 - Build
+        run: pwd
+      - name: ls
         run: ls
       - name: Step 2 - Test
         run: echo "Running tests..."
