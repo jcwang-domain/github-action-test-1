@@ -9,8 +9,9 @@ jobs:
   # 自动执行步骤
   auto-steps:
     runs-on: ubuntu-latest
-    run:
-      woworking-directory: ./.github
+    defaults:
+      run:
+        working-directory: ./scripts
     steps:
       - name: Step 1 - Build
         run: ls
@@ -21,8 +22,9 @@ jobs:
   manual-steps:
     needs: auto-steps
     runs-on: ubuntu-latest
-    run:
-      woworking-directory: ./.github
+    defaults:
+      run:
+        working-directory: ./scripts
     environment:
       name: production  # 需要审批的环境
     steps:
