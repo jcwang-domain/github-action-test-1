@@ -1,4 +1,4 @@
-name: Auto and Manual Workflow
+name: Single Pipeline with Manual Trigger
 
 on:
   push:
@@ -6,19 +6,25 @@ on:
       - main
 
 jobs:
-  build:
+  # 自动执行步骤
+  auto-steps:
     runs-on: ubuntu-latest
+    run:
+      woworking-directory: ./.github
     steps:
       - name: Step 1 - Build
-        run: echo "Building project..."
+        run: ls
       - name: Step 2 - Test
         run: echo "Running tests..."
 
-  deploy:
-    needs: build
+  # 手动触发的步骤
+  manual-steps:
+    needs: auto-steps
     runs-on: ubuntu-latest
+    run:
+      woworking-directory: ./.github
     environment:
-      name: production # 设置需要审批的环境
+      name: production  # 需要审批的环境
     steps:
-      - name: Step 3 - Awaiting Approval
-        run: echo "Deploying project to production after approval..."
+      - name: Step 3 - Manual Approval
+        run: ls
