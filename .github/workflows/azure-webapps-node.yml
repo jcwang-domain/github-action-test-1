@@ -34,4 +34,3 @@ jobs:
     steps:
       - name: Step 3 - Manual Approval
         run: ls
-
